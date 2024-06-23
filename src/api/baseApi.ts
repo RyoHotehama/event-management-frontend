@@ -23,7 +23,12 @@ export const postApi = async <T>(requestParams: T, url: string, accessToken?: st
         },
       });
 
-      return response
+      const data = {
+        status: response.status,
+        data: response.data
+      }
+
+      return data
     } catch (error: any) {
       const response = {
         status: error.response.status,
