@@ -18,7 +18,7 @@ export default function Login() {
     });
 
     const handleLogin = useCallback(async(data: LoginForm) => {
-        const response = await onSubmit(data, USER_ROLE.NORMAL_USER_ROLE, setErrorMessage);
+        const response = await onSubmit(data, USER_ROLE.ADMIN_USER_ROLE, setErrorMessage);
 
         if (response) {
             // 成功処理を実装
@@ -30,7 +30,7 @@ export default function Login() {
         <Container maxWidth='xs' sx={{ paddingTop: 30 }}>
             <Box border={2} borderColor={'#f8f8f8'} borderRadius={3} sx={{ backgroundColor: '#f8f8f8' }}>
             <Stack justifyContent="center" alignItems="center" gap="30px">
-                <Typography id="login_heading" variant="h2" fontSize="1.5rem" paddingTop={5} color={'#2b2b2b'}>ログイン</Typography>
+                <Typography id="login_heading" variant="h2" fontSize="1.5rem" paddingTop={5} color={'#2b2b2b'}>管理者ログイン</Typography>
                 <Stack component="form" gap="20px" aria-labelledby="login_heading" width={'80%'} onSubmit={handleSubmit(handleLogin)}>
                 <Controller
                     name="email"
