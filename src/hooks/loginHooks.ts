@@ -8,10 +8,10 @@ export const schema = yup.object().shape({
     password: yup.string().required('パスワードは必須です'),
 });
 
-export const onSubmit = async(data: LoginForm, setErrorMessage: Dispatch<SetStateAction<string>>) => {
+export const onSubmit = async(data: LoginForm, userRole: number, setErrorMessage: Dispatch<SetStateAction<string>>) => {
     // フォームのデータを取得し、ログイン処理を実行する
     try {
-        const response = await loginApi(data)
+        const response = await loginApi(data, userRole)
 
         return response
     } catch (error: any) {
