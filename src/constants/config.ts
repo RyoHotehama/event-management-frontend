@@ -1,5 +1,6 @@
 export const BASE_URL = {
-    LOGIN: '/login'
+    LOGIN: 'api/login',
+    CSRF_TOKEN: 'sanctum/csrf-cookie'
 }
 
 export const LOGIN_ERROR_MESSAGE = {

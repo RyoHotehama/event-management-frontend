@@ -5,9 +5,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { onSubmit, schema } from '@/hooks/loginHooks';
 import { useCallback, useState } from 'react';
 import { USER_ROLE } from '@/constants/config';
+import { csrfTokenApi } from '@/api/csrfToken';
+import nookies from 'nookies';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     const [ errorMessage, setErrorMessage ] = useState<string>('');
+    const router = useRouter();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -18,12 +22,17 @@ export default function Login() {
     });
 
     const handleLogin = useCallback(async(data: LoginForm) => {
+        await csrfTokenApi();
         const response = await onSubmit(data, USER_ROLE.ADMIN_USER_ROLE, setErrorMessage);
+        if (response && response.status == 200) {
+            nookies.set(null, 'token', response.data.token, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            });
 
-        if (response) {
-            // 成功処理を実装
+            router.push('/admin/dashboard')
         }
-    }, [errorMessage]);
+    }, [errorMessage, router]);
 
     return (
         <Box sx={{ backgroundImage: 'linear-gradient(90deg, rgba(144, 245, 154, 1), rgba(4, 202, 255, 1))', height: '100vh' }}>
