@@ -11,3 +11,15 @@ export const USER_ROLE = {
     NORMAL_USER_ROLE: 0,
     ADMIN_USER_ROLE: 1
 }
+
+export const DRAWER_LIST = [
+    {
+        title: 'ユーザー一覧'
+    },
+    {
+        title: 'イベント一覧'
+    },
+    {
+        title: 'ユーザー作成'
+    }
+]
