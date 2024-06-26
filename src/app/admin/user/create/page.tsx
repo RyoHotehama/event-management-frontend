@@ -1,18 +1,13 @@
 'use client'
-import { Box, Container, Stack, Typography, TextField, Button } from '@mui/material';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { onSubmit, schema } from '@/hooks/loginHooks';
-import { useCallback, useState } from 'react';
-import { USER_ROLE } from '@/constants/config';
-import { csrfTokenApi } from '@/api/csrfToken';
-import nookies from 'nookies';
-import { useRouter } from 'next/navigation';
+import { Container } from '@mui/material';
+import HeadLine from '@/components/headLine';
+import UserForm from '@/components/userForm';
 
 export default function UserCreate() {
     return (
-        <Box>
-            あああ
-        </Box>
+        <Container maxWidth='md'>
+            <HeadLine title='新規ユーザー作成' />
+            <UserForm />
+        </Container>
     );
 }

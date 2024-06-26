@@ -1,4 +1,4 @@
-import { loginApi } from '@/api/login';
+import { loginApi } from '@/api/loginApi';
 import { LOGIN_ERROR_MESSAGE } from '@/constants/config';
 import { Dispatch, SetStateAction } from 'react';
 import * as yup from 'yup';

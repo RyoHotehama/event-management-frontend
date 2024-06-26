@@ -1,6 +1,7 @@
 export const BASE_URL = {
     LOGIN: 'api/login',
-    CSRF_TOKEN: 'sanctum/csrf-cookie'
+    CSRF_TOKEN: 'sanctum/csrf-cookie',
+    CREATE_USER: 'api/user/create',
 }
 
 export const LOGIN_ERROR_MESSAGE = {
@@ -22,4 +23,15 @@ export const DRAWER_LIST = [
     {
         title: 'ユーザー作成'
     }
+]
+
+export const ROLE_LIST = [
+    {
+        name: '一般ユーザー',
+        value: 0
+    },
+    {
+        name: '管理者',
+        value: 1
+    },
 ]
