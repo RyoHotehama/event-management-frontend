@@ -17,10 +17,10 @@ export const onSubmit = async(data: LoginForm, userRole: number, setErrorMessage
     } catch (error: any) {
         if (error.status === 400) {
             setErrorMessage(LOGIN_ERROR_MESSAGE.ERROR_MESSAGE)
+            throw error
         } else if (error.status === 401 || error.status === 403) {
             setErrorMessage(error.data.message)
-        } else {
-            // todo エラー画面へ
+            throw error
         }
     }
 };

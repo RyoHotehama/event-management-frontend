@@ -28,8 +28,8 @@ export const onSubmit = async(data: UserForm, setErrorEmail: Dispatch<SetStateAc
             if (error.data?.errors.firstName) {
                 setErrorFirstName(error.data.errors.firstName)
             }
-        } else {
-            // todo エラー画面へ
+
+            throw error
         }
     }
 };

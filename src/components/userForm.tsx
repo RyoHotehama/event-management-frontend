@@ -22,6 +22,10 @@ const UserForm = () => {
     const handleCreateUser = useCallback(async(data: UserForm) => {
         const response = await onSubmit(data, setErrorEmail, setErrorLastName, setErrorFirstName);
 
+        if (!response) {
+            window.location.href = '/admin/error';
+        }
+
         const userId = response?.data.userId;
 
         window.location.href = '/admin/complete?userId=' + userId;
