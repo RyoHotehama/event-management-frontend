@@ -33,7 +33,7 @@ export default function Login() {
 
             router.push('/dashboard')
         }
-    }, [errorMessage]);
+    }, [errorMessage, router]);
 
     return (
         <Box sx={{ backgroundImage: 'linear-gradient(90deg, rgba(144, 245, 154, 1), rgba(4, 202, 255, 1))', height: '100vh' }}>
