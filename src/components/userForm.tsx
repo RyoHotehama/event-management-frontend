@@ -1,7 +1,7 @@
 import { ROLE_LIST } from "@/constants/config"
 import { onSubmit, schema } from "@/hooks/createUserHooks";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material"
+import { Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material"
 import { useCallback, useState } from "react";
 import { Controller, useForm } from "react-hook-form"
 
@@ -22,8 +22,9 @@ const UserForm = () => {
     const handleCreateUser = useCallback(async(data: UserForm) => {
         const response = await onSubmit(data, setErrorEmail, setErrorLastName, setErrorFirstName);
 
-        // 成功処理
+        const userId = response?.data.userId;
 
+        window.location.href = '/admin/complete?userId=' + userId;
     }, [errorEmail, errorLastName, errorFirstName]);
 
     return (
@@ -40,8 +41,8 @@ const UserForm = () => {
                         <TextField
                             {...field}
                             label="メールアドレス"
-                            error={!!errors.email}
-                            helperText={errors.email?.message}
+                            error={!!errors.email || !!errorEmail}
+                            helperText={errors.email?.message || errorEmail}
                             required
                             fullWidth
                         />
@@ -80,8 +81,8 @@ const UserForm = () => {
                         <TextField
                             {...field}
                             label="性"
-                            error={!!errors.lastName}
-                            helperText={errors.lastName?.message}
+                            error={!!errors.lastName || !!errorLastName}
+                            helperText={errors.lastName?.message || errorLastName}
                             required
                             fullWidth
                         />
@@ -96,8 +97,8 @@ const UserForm = () => {
                         <TextField
                             {...field}
                             label="名"
-                            error={!!errors.lastName}
-                            helperText={errors.lastName?.message}
+                            error={!!errors.lastName || !!errorFirstName}
+                            helperText={errors.lastName?.message || errorFirstName}
                             required
                             fullWidth
                         />

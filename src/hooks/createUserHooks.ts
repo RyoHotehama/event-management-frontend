@@ -17,16 +17,16 @@ export const onSubmit = async(data: UserForm, setErrorEmail: Dispatch<SetStateAc
         return response
     } catch (error: any) {
         if (error.status === 400) {
-            if (error.data.email) {
-                setErrorEmail(error.data.email)
+            if (error.data?.errors.email) {
+                setErrorEmail(error.data.errors.email)
             }
 
-            if (error.data.lastName) {
-                setErrorLastName(error.data.lastName)
+            if (error.data?.errors.lastName) {
+                setErrorLastName(error.data.errors.lastName)
             }
 
-            if (error.data.firstName) {
-                setErrorFirstName(error.data.firstName)
+            if (error.data?.errors.firstName) {
+                setErrorFirstName(error.data.errors.firstName)
             }
         } else {
             // todo エラー画面へ
