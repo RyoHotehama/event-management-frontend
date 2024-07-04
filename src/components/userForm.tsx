@@ -1,3 +1,4 @@
+'use client'
 import { ROLE_LIST } from "@/constants/config"
 import { onSubmit, schema } from "@/hooks/createUserHooks";
 import { yupResolver } from "@hookform/resolvers/yup";
