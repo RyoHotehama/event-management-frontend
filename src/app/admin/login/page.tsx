@@ -24,13 +24,17 @@ export default function Login() {
     const handleLogin = useCallback(async(data: LoginForm) => {
         await csrfTokenApi();
         const response = await onSubmit(data, USER_ROLE.ADMIN_USER_ROLE, setErrorMessage);
-        if (response && response.status == 200) {
-            nookies.set(null, 'token', response.data.token, {
-                maxAge: 30 * 24 * 60 * 60,
-                path: '/',
-            });
+        if (response) {
+            if (response.status == 200) {
+                nookies.set(null, 'token', response.data.token, {
+                    maxAge: 30 * 24 * 60 * 60,
+                    path: '/',
+                });
 
-            router.push('/admin/dashboard')
+                router.push('/admin/dashboard')
+            }
+        } else {
+            window.location.href = '/admin/error'
         }
     }, [errorMessage, router]);
 

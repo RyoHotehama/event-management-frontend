@@ -9,9 +9,19 @@ export const getApi = async <T>(requestParams: T, url: string, accessToken?: str
         params: requestParams
       });
 
-      return response
-    } catch (error) {
-        throw error
+      const data = {
+        status: response.status,
+        data: response.data
+      }
+
+      return data
+    } catch (error: any) {
+      const response = {
+        status: error.response.status,
+        data: error.response.data
+      }
+
+      throw response
     }
 }
 

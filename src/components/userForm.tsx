@@ -1,3 +1,4 @@
+'use client'
 import { ROLE_LIST } from "@/constants/config"
 import { onSubmit, schema } from "@/hooks/createUserHooks";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,6 +22,10 @@ const UserForm = () => {
 
     const handleCreateUser = useCallback(async(data: UserForm) => {
         const response = await onSubmit(data, setErrorEmail, setErrorLastName, setErrorFirstName);
+
+        if (!response) {
+            window.location.href = '/admin/error';
+        }
 
         const userId = response?.data.userId;
 
