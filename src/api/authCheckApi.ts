@@ -1,6 +1,6 @@
 import { BASE_URL } from "@/constants/config"
-import { getApi, postApi } from "./baseApi"
-import { getToken } from "@/hooks/baseHooks"
+import { getApi } from "./baseApi"
+import { getToken } from "@/hooks/baseServerHooks"
 
 export const authCheckApi = async() => {
     const baseUrl = BASE_URL.AUTH_CHECK

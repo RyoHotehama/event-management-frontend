@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation';
-import { getToken } from '@/hooks/baseHooks';
 import { authCheckApi } from '@/api/authCheckApi';
 import { REDIRECT_URL } from '@/constants/config';
+import { getToken } from './baseServerHooks';
 
 const AuthCheck = async() => {
-        const token = getToken();
+        const token = getToken()
 
         if (!token) {
             redirect(REDIRECT_URL.ADMIN);
