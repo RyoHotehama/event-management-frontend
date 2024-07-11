@@ -2,11 +2,13 @@ export const BASE_URL = {
     LOGIN: 'api/login',
     CSRF_TOKEN: 'sanctum/csrf-cookie',
     CREATE_USER: 'api/user/create',
-    AUTH_CHECK: 'api/admin/user'
+    AUTH_CHECK: 'api/admin/user',
+    PROFILE_LIST: '/api/user/list'
 }
 
 export const REDIRECT_URL = {
-    ADMIN: '/admin/login'
+    ADMIN: '/admin/login',
+    ADMIN_ERROR: '/admin/error'
 }
 
 export const LOGIN_ERROR_MESSAGE = {
