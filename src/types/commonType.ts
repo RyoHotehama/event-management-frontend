@@ -12,6 +12,8 @@ type UserForm = {
 
 type ProfileListParameter = {
     page?: number,
+    role?: number,
+    search?: string
 }
 
 type ProfileList = {

@@ -1,9 +1,18 @@
 'use client'
-import { createUserApi } from '@/api/createUserApi';
-import { Dispatch, SetStateAction } from 'react';
+import * as yup from 'yup';
 
-export const onClickPage = (page: number, role: number) => {
+export const schema = yup.object().shape({
+    search: yup.string(),
+    role: yup.mixed()
+});
+
+export const onClickPage = (page: number, role: number, search: string) => {
     let url = `/admin/user/list?page=${page}`
+
+    if (search && search !== 'undefined') {
+        url = url + `&search=${search}`
+    }
+
     if (!isNaN(role)) {
         url = url + `&role=${role}`
     }
@@ -11,27 +20,15 @@ export const onClickPage = (page: number, role: number) => {
     window.location.href = url
 }
 
-export const onSubmit = async(data: UserForm, setErrorEmail: Dispatch<SetStateAction<string>>, setErrorLastName: Dispatch<SetStateAction<string>>, setErrorFirstName: Dispatch<SetStateAction<string>>) => {
-    // フォームのデータを取得し、ユーザー登録処理を実行する
-    try {
-        const response = await createUserApi(data)
-
-        return response
-    } catch (error: any) {
-        if (error.status === 400) {
-            if (error.data?.errors.email) {
-                setErrorEmail(error.data.errors.email)
-            }
-
-            if (error.data?.errors.lastName) {
-                setErrorLastName(error.data.errors.lastName)
-            }
-
-            if (error.data?.errors.firstName) {
-                setErrorFirstName(error.data.errors.firstName)
-            }
-
-            throw error
-        }
+export const handleSearch = (data: any) => {
+    let url = '/admin/user/list'
+    if (data.search && (data.role || data.role === 0)) {
+        url = url + `?search=${data.search}&role=${data.role}`;
+    } else if (data.search) {
+        url = url + `?search=${data.search}`;
+    } else if (data.role || data.role === 0) {
+        url = url + `?role=${data.role}`;
     }
+
+    window.location.href = url
 };
