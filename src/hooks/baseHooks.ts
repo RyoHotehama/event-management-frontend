@@ -7,3 +7,7 @@ export const getToken = () => {
 
     return token;
 }
+
+export const handleBack = () => {
+    window.history.back();
+};

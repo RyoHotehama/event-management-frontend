@@ -42,11 +42,11 @@ export default function ProfileList({profileList}: {profileList: ProfileList}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {profileList.data.map((profileData: { user_id: number; name: string; role_name: string; create_date: string; }) =>
+          {profileList.data.map((profileData: { id: number; name: string; role_name: string; create_date: string; }) =>
           (
-            <StyledTableRow key={profileData.user_id}>
+            <StyledTableRow key={profileData.id}>
               <StyledTableCell component="th" scope="row">
-                <Link href={`/admin/user/${profileData.user_id}`} style={{textDecoration: 'none', color: 'green'}}>
+                <Link href={`/admin/user/${profileData.id}`} style={{textDecoration: 'none', color: 'green'}}>
                   <Typography>
                     {profileData.name}
                   </Typography>

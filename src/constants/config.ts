@@ -3,7 +3,8 @@ export const BASE_URL = {
     CSRF_TOKEN: 'sanctum/csrf-cookie',
     CREATE_USER: 'api/user/create',
     AUTH_CHECK: 'api/admin/user',
-    PROFILE_LIST: '/api/user/list'
+    PROFILE_LIST: 'api/user/list',
+    PROFILE_DETAIL: 'api/user/detail'
 }
 
 export const REDIRECT_URL = {
