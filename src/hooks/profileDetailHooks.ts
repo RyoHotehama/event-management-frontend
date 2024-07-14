@@ -1,4 +1,6 @@
 'use client'
+import { profileEditApi } from '@/api/profileEditApi';
+import { Dispatch, SetStateAction } from 'react';
 import * as yup from 'yup';
 
 export const schema = yup.object().shape({
@@ -7,3 +9,27 @@ export const schema = yup.object().shape({
     lastName: yup.string().required('姓は必須です'),
     firstName: yup.string().required('名は必須です'),
 });
+
+export const handleEdit = async(userData: UserForm , id: number, setErrorEmail: Dispatch<SetStateAction<string>>, setErrorLastName: Dispatch<SetStateAction<string>>, setErrorFirstName: Dispatch<SetStateAction<string>>) => {
+    try {
+        const response = await profileEditApi(userData, id)
+
+        return response
+    } catch (error: any) {
+        if (error.status === 400) {
+            if (error.data?.errors.email) {
+                setErrorEmail(error.data.errors.email)
+            }
+
+            if (error.data?.errors.lastName) {
+                setErrorLastName(error.data.errors.lastName)
+            }
+
+            if (error.data?.errors.firstName) {
+                setErrorFirstName(error.data.errors.firstName)
+            }
+
+            throw error
+        }
+    }
+}

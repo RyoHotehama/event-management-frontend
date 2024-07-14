@@ -8,6 +8,6 @@ export const getToken = () => {
     return token;
 }
 
-export const handleBack = () => {
-    window.history.back();
+export const handleBack = (url: string) => {
+    window.location.href = url
 };

@@ -4,7 +4,8 @@ export const BASE_URL = {
     CREATE_USER: 'api/user/create',
     AUTH_CHECK: 'api/admin/user',
     PROFILE_LIST: 'api/user/list',
-    PROFILE_DETAIL: 'api/user/detail'
+    PROFILE_DETAIL: 'api/user/detail',
+    PROFILE_EDIT: '/api/user/edit'
 }
 
 export const REDIRECT_URL = {
@@ -15,6 +16,8 @@ export const REDIRECT_URL = {
 export const LOGIN_ERROR_MESSAGE = {
     ERROR_MESSAGE: 'メールアドレスまたはパスワードが違います。'
 }
+
+export const PROFILE_SUCCESS = 'プロフィールを修正しました。'
 
 export const USER_ROLE = {
     NORMAL_USER_ROLE: 0,
