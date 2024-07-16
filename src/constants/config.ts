@@ -5,7 +5,8 @@ export const BASE_URL = {
     AUTH_CHECK: 'api/admin/user',
     PROFILE_LIST: 'api/user/list',
     PROFILE_DETAIL: 'api/user/detail',
-    PROFILE_EDIT: '/api/user/edit'
+    PROFILE_EDIT: '/api/user/edit',
+    PROFILE_DELETE: '/api/user/delete'
 }
 
 export const REDIRECT_URL = {

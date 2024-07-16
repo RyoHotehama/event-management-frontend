@@ -1,7 +1,7 @@
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import HeadLine from '@/components/headLine';
 import AuthCheck from '@/hooks/authCheckHooks';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { REDIRECT_URL } from '@/constants/config';
 import { getProfileDetailApi } from '@/api/getProfileDetailApi';
 import ProfileDetail from '@/components/profileDetail';
@@ -20,6 +20,9 @@ export default async function UserDetail({ params }: { params: { id: string } })
         profileDetail = response.data.profileDetail;
 
     } catch (error: any) {
+        if (error.status === 400) {
+            notFound()
+        }
         redirect(REDIRECT_URL.ADMIN_ERROR)
     }
 
@@ -30,7 +33,7 @@ export default async function UserDetail({ params }: { params: { id: string } })
                     <HeadLine title='ユーザー詳細' />
                 </Grid>
                 <Grid item xs={2} paddingTop={5} paddingBottom={5}>
-                    <UserDeleteButton />
+                    <UserDeleteButton profileId={profileDetail.id}/>
                 </Grid>
             </Grid>
             <ProfileDetail profileDetail={profileDetail} />

@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/constants/config"
-import { postApi } from "./baseApi"
+import { putApi } from "./baseApi"
 import { getToken } from "@/hooks/baseHooks";
 
 export const profileEditApi = async(request: UserForm, id: number) => {
@@ -7,7 +7,7 @@ export const profileEditApi = async(request: UserForm, id: number) => {
     const token = getToken();
 
     try {
-        const response = await postApi<UserForm>(request, baseUrl, token)
+        const response = await putApi<UserForm>(request, baseUrl, token)
 
         return response
     } catch (error) {

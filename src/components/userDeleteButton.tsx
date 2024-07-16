@@ -1,8 +1,10 @@
-import { Box, Button, Typography } from "@mui/material"
+'use client'
+import { handleDelete } from "@/hooks/profileDetailHooks"
+import { Button } from "@mui/material"
 
-const UserDeleteButton = () => {
+const UserDeleteButton = ({profileId}: {profileId:number}) => {
     return (
-        <Button type="submit" variant="contained" color={'error'} size='large'>削除する</Button>
+        <Button type="submit" variant="contained" color={'error'} size='large' onClick={() => handleDelete(profileId)}>削除する</Button>
     )
 }
 
