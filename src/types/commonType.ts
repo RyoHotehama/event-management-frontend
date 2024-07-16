@@ -20,7 +20,7 @@ type ProfileList = {
     current_page: number,
     data: [
         {
-            user_id: number,
+            id: number,
             name: string,
             role_name: string,
             create_date: string
@@ -29,4 +29,13 @@ type ProfileList = {
     last_page: number,
     per_page: number,
     total: number,
+}
+
+type ProfileDetail = {
+    id: number,
+    last_name: string,
+    first_name: string,
+    email: string,
+    role: number,
+    create_date: string
 }
